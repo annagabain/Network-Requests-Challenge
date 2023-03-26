@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import css from "./css/Content.module.css";
 import {savedPosts} from "../posts.json";
-import PostItem from "./PostItem";
+import PostItem from "./PostItem_old";
 import Loader from "./Loader";
 
 function ContentHooks() {
