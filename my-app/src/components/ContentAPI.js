@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import css from "./css/Content.module.css";
 import {savedPosts} from "../posts.json";
-import PostItem from "./PostItemAPI";
+import PostItemAPI from "./PostItemAPI";
 import Loader from "./Loader";
 import axios from "axios";
 import API_KEY from "../secrets";
@@ -15,6 +15,10 @@ export class Content extends Component {
             savedPosts: [],
         }
     }
+    componentDidMount() {
+        this.fetchImages();
+    }
+
     async fetchImages() {
         const response = await axios.get(`https://pixabay.com/api/?key=${API_KEY}&per_page=100`);
         const fetchedPosts = response.data.hits;
@@ -62,7 +66,7 @@ export class Content extends Component {
                 <div className={css.SearchResults}>
                     {
                         this.state.isLoaded ?
-                        <PostItem savedPosts={this.state.posts} />
+                        <PostItemAPI savedPosts={this.state.posts} />
                         : <Loader />
                     }
                 </div>
